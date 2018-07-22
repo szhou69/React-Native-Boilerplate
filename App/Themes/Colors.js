@@ -19,11 +19,16 @@ const colors = {
   fire: '#e73536',
   drawer: 'rgba(30, 30, 29, 0.95)',
   eggplant: '#251a34',
-  border: '#483F53',
+  //border: '#483F53',
   banner: '#5F3E63',
   text: '#E0D7E5',
   //
+  white: '#ffffff',
   primaryText: '#000000',
+  themeColor:'#5198c5',
+  antiPrimaryText: '#ffffff',
+  border: '#d9d9d9',
+  hintTextColor: '#eeeeee',
 }
 
 export default colors

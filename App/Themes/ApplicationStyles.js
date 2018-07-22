@@ -11,6 +11,33 @@ const ApplicationStyles = {
       flex: 1,
       backgroundColor: Colors.background
     },
+    keyboardAvoidingContainer: {
+      padding: 20,
+      flex: 1
+    },
+    button: {
+      backgroundColor: Colors.white,
+      borderColor: Colors.white,
+      height: 40,
+      borderRadius: Metrics.buttonRadius,
+      justifyContent: 'center',
+      alignSelf: 'stretch',
+    },
+    buttonText: {
+      color: Colors.themeColor,
+      textAlign: 'center',
+      fontSize: 16,
+    },
+    textInput: {
+      borderColor: Colors.border,
+      color: Colors.antiPrimaryText,
+      paddingLeft: 10,
+      borderWidth: 0.5,
+      height: 40,
+      borderRadius: Metrics.buttonRadius,
+      justifyContent: 'center',
+      alignSelf: 'stretch',
+    },
     backgroundImage: {
       position: 'absolute',
       top: 0,
@@ -25,12 +52,14 @@ const ApplicationStyles = {
     },
     section: {
       margin: Metrics.section,
-      padding: Metrics.baseMargin
+      padding: Metrics.baseMargin,
+      justifyContent:'center',
+      alignItems: 'center'
     },
     sectionText: {
       ...Fonts.style.normal,
       paddingVertical: Metrics.doubleBaseMargin,
-      color: Colors.primaryText,
+      color: Colors.antiPrimaryText,
       marginVertical: Metrics.smallMargin,
       textAlign: 'center'
     },
@@ -42,8 +71,8 @@ const ApplicationStyles = {
     },
     titleText: {
       ...Fonts.style.h2,
-      fontSize: 14,
-      color: Colors.text
+      fontSize: 20,
+      color: Colors.antiPrimaryText
     }
   },
   darkLabelContainer: {
