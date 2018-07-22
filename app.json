@@ -1,4 +1,9 @@
 {
   "name": "smart_checkin",
-  "displayName": "smart_checkin"
+  "displayName": "smart_checkin",
+  "expo": {
+    "name": "smart_checkin",
+    "slug": "smart-checkin-app",
+    "sdkVersion": "28.0.0"
+  }
 }
