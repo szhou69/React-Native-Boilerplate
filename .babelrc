@@ -4,5 +4,6 @@
     "production": {
       "plugins": ["ignite-ignore-reactotron"]
     }
-  }
+  },
+  "plugins": [["import", { "libraryName": "antd-mobile-rn" }]]
 }
