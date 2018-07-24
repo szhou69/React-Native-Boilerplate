@@ -1,8 +1,9 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce'
+import Config from 'react-native-config'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'http://54.215.205.52:3000/v1') => {
   // ------
   // STEP 1
   // ------
@@ -14,7 +15,9 @@ const create = (baseURL = 'https://api.github.com/') => {
     baseURL,
     // here are some default headers
     headers: {
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'Content-Type': 'application/json',
+      'Accept' : 'application/json',
     },
     // 10 second timeout...
     timeout: 10000
@@ -34,9 +37,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const login = (email, password) => api.post('/auth/admin', {email: email, password: password})
 
   // ------
   // STEP 3
@@ -52,9 +53,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
   return {
     // a list of the API functions from step 2
-    getRoot,
-    getRate,
-    getUser
+    login
   }
 }
 

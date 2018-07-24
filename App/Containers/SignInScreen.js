@@ -2,25 +2,35 @@ import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, TouchableOpacity, TextInput, KeyboardAvoidingView, AsyncStorage } from 'react-native'
 import { Images } from '../Themes'
 import { WhiteSpace } from 'antd-mobile-rn';
+import LoginActions from '../Redux/LoginRedux'
+import { connect } from 'react-redux'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 
-export default class SignInScreen extends Component {
+class SignInScreen extends Component {
   static navigationOptions = {
     headerMode: 'none',
   };
   constructor(props) {
     super(props);
-    this.state = { text: "" };
+    this.state = { 
+      email: "", 
+      password: "" 
+    };
+    this.isAttempting = false
   }
 
   _signInAsync = async () => {
     //await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('App');
+    //this.props.navigation.navigate('App');
+    const { email, password } = this.state;
+    this.props.attemptLogin(email, password);
   };
 
   render () {
+    const { email, password } = this.state
+    const { fetching } = this.props
     return (
       <View style={styles.mainContainer}>
           <KeyboardAvoidingView style={styles.keyboardAvoidingContainer} behavior="padding" enabled>
@@ -34,14 +44,14 @@ export default class SignInScreen extends Component {
             <WhiteSpace size="xl" />
             <TextInput
                 style={styles.textInput}
-                onChangeText={(text) => this.setState({text})}
+                onChangeText={(email) => this.setState({email})}
                 placeholder="Email"
                 placeholderTextColor="white"
               />
               <WhiteSpace size="md" />
               <TextInput
                 style={styles.textInput}
-                onChangeText={(text) => this.setState({text})}
+                onChangeText={(password) => this.setState({password})}
                 secureTextEntry
                 returnKeyType="go"
                 placeholder="Password"
@@ -56,3 +66,17 @@ export default class SignInScreen extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    fetching: state.admin.fetching
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    attemptLogin: (email, password) => dispatch(LoginActions.userRequest(email, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen)
