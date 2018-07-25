@@ -7,7 +7,21 @@ import OtherScreen from '../Containers/OtherScreen'
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
-const AppStack = StackNavigator({ HomeScreen: { screen: HomeScreen }, Other: OtherScreen });
+const AppStack = StackNavigator(
+  { 
+  HomeScreen: { screen: HomeScreen }, 
+  Other: {screen: OtherScreen}
+  },{
+    // headerMode: 'none',
+    navigationOptions: {
+      headerStyle: styles.header,
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }
+  }
+);
 const AuthStack = StackNavigator({ 
     SignInScreen: { screen: SignInScreen }
     },{

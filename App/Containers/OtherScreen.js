@@ -6,13 +6,14 @@ import { Images } from '../Themes'
 import styles from './Styles/LaunchScreenStyles'
 
 export default class OtherScreen extends Component {
-    static navigationOptions = {
-        title: 'Other Screen',
-      };    
+  static navigationOptions = {
+    title: 'Other Screen',
+  };
+
   render () {
     return (
       <View style={styles.mainContainer}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
+        {/* <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' /> */}
         <ScrollView style={styles.container}>
           
         </ScrollView>

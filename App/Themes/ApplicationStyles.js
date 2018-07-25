@@ -9,7 +9,7 @@ const ApplicationStyles = {
   screen: {
     mainContainer: {
       flex: 1,
-      backgroundColor: Colors.background
+      backgroundColor: Colors.white
     },
     keyboardAvoidingContainer: {
       padding: 20,
@@ -29,13 +29,11 @@ const ApplicationStyles = {
       fontSize: 16,
     },
     textInput: {
-      borderColor: Colors.border,
-      color: Colors.antiPrimaryText,
       paddingLeft: 10,
-      borderWidth: 0.5,
       height: 40,
+      flex: 1,
+      color: Colors.antiPrimaryText,
       borderRadius: Metrics.buttonRadius,
-      justifyContent: 'center',
       alignSelf: 'stretch',
     },
     backgroundImage: {

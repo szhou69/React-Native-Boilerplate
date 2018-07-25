@@ -11,6 +11,7 @@ export function * getUser (api, action) {
     //console.tron.log("successful login:" + response.data.token);
     yield put(LoginActions.userSuccess(response.data.token))
   } else {
-    yield put(LoginActions.userFailure())
+    console.tron.log(response.data.error[0]);
+    yield put(LoginActions.userFailure(response.data.error[0]))
   }
 }

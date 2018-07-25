@@ -24,6 +24,7 @@ const colors = {
   text: '#E0D7E5',
   //
   white: '#ffffff',
+  backgroundColor: '#5198c5',
   primaryText: '#000000',
   themeColor:'#5198c5',
   antiPrimaryText: '#ffffff',

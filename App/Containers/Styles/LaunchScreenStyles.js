@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { Metrics, ApplicationStyles } from '../../Themes'
+import Colors from '../../Themes/Colors'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -18,5 +19,16 @@ export default StyleSheet.create({
   centerContainer: {
     flex: 1,
     justifyContent: 'center'
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 10,
+    borderColor: Colors.border,
+    // color: Colors.antiPrimaryText,
+    borderWidth: 0.5,
+    height: 40,
+    borderRadius: Metrics.buttonRadius,
+    alignSelf: 'stretch',
   }
 })

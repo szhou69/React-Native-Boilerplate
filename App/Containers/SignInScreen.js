@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View, TouchableOpacity, TextInput, KeyboardAvoidingView, AsyncStorage } from 'react-native'
+import { ScrollView, Text, Image, View, TouchableOpacity, TextInput, KeyboardAvoidingView, AsyncStorage, Alert } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { Images } from '../Themes'
 import { WhiteSpace } from 'antd-mobile-rn';
 import LoginActions from '../Redux/LoginRedux'
 import { connect } from 'react-redux'
+import _ from 'lodash';
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -42,25 +44,34 @@ class SignInScreen extends Component {
               </Text>
             </View>
             <WhiteSpace size="xl" />
-            <TextInput
+            <View style={styles.row}>
+              <Icon name="user" size={20} color="#fff" />
+              <TextInput
                 style={styles.textInput}
                 onChangeText={(email) => this.setState({email})}
                 placeholder="Email"
                 placeholderTextColor="white"
+                onSubmitEditing={() => this.refs.password.focus()}
               />
-              <WhiteSpace size="md" />
+            </View>
+            <WhiteSpace size="md" />
+            <View style={styles.row}>
+              <Icon name="lock" size={20} color="#fff" />
               <TextInput
+                ref='password'
                 style={styles.textInput}
                 onChangeText={(password) => this.setState({password})}
                 secureTextEntry
                 returnKeyType="go"
                 placeholder="Password"
+                onSubmitEditing={this._signInAsync}
                 placeholderTextColor="white"
               />
-              <WhiteSpace size="xl" />
-              <TouchableOpacity style={styles.button} onPress={this._signInAsync}>
-                <Text style={styles.buttonText}> Log In </Text>
-              </TouchableOpacity>
+            </View>
+            <WhiteSpace size="xl" />
+            <TouchableOpacity style={styles.button} onPress={this._signInAsync}>
+              <Text style={styles.buttonText}> Log In </Text>
+            </TouchableOpacity>
           </KeyboardAvoidingView>
       </View>
     )
@@ -69,7 +80,8 @@ class SignInScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.admin.fetching
+    fetching: state.admin.fetching,
+    admin: state.admin
   }
 }
 
