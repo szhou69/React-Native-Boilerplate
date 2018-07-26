@@ -1,5 +1,5 @@
 const colors = {
-  background: '#ffffff',
+  background: '#f5f5f5',
   clear: 'rgba(0,0,0,0)',
   facebook: '#3b5998',
   transparent: 'rgba(0,0,0,0)',
@@ -25,11 +25,17 @@ const colors = {
   //
   white: '#ffffff',
   backgroundColor: '#5198c5',
-  primaryText: '#000000',
-  themeColor:'#5198c5',
+  //primaryText: 'rgba(0, 0, 0, 0.87)',
+  primaryText: '#545767',
+  secondaryText: 'rgba(84, 87, 103, 0.87)',
+  subtitleText: 'rgba(84, 87, 103, 0.54)',
+  themeColor:'#0fa665',
   antiPrimaryText: '#ffffff',
   border: '#d9d9d9',
   hintTextColor: '#eeeeee',
+  confirmColor: '#F57F17',
+  checkedInColor: '#00C853',
+  unCheckedInColor: '#E53935',
 }
 
 export default colors

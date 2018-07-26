@@ -1,3 +1,5 @@
+import {Platform} from 'react-native';
+
 const type = {
   base: 'Avenir-Book',
   bold: 'Avenir-Black',
@@ -50,6 +52,9 @@ const style = {
   description: {
     fontFamily: type.base,
     fontSize: size.medium
+  },
+  regular: {
+    fontFamily: Platform.OS === 'ios' ? 'Futura-Medium' : 'Roboto',
   }
 }
 

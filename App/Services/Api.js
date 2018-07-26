@@ -38,6 +38,8 @@ const create = (baseURL = 'http://54.215.205.52:3000/v1') => {
   // way at this level.
   //
   const login = (email, password) => api.post('/auth/admin', {email: email, password: password})
+  const get_apoointments = (token) => api.get('/admin/appointment/allAppointment', {}, {headers: {'Authorization': 'Bearer '+token}})
+
 
   // ------
   // STEP 3
@@ -53,7 +55,8 @@ const create = (baseURL = 'http://54.215.205.52:3000/v1') => {
   //
   return {
     // a list of the API functions from step 2
-    login
+    login,
+    get_apoointments
   }
 }
 

@@ -23,9 +23,14 @@ class SignInScreen extends Component {
     this.isAttempting = false
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!_.isEqual(this.props, nextProps) && nextProps.admin.token) {
+      this.props.navigation.navigate('App');
+      AsyncStorage.setItem('userToken', nextProps.admin.token);
+    }
+  }
+
   _signInAsync = async () => {
-    //await AsyncStorage.setItem('userToken', 'abc');
-    //this.props.navigation.navigate('App');
     const { email, password } = this.state;
     this.props.attemptLogin(email, password);
   };
