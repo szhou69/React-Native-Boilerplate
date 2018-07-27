@@ -55,6 +55,9 @@ const style = {
   },
   regular: {
     fontFamily: Platform.OS === 'ios' ? 'Futura-Medium' : 'Roboto',
+  },
+  time: {
+    fontFamily: Platform.OS === 'ios' ? 'Futura' : 'Roboto',
   }
 }
 

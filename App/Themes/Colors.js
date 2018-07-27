@@ -29,7 +29,7 @@ const colors = {
   primaryText: '#545767',
   secondaryText: 'rgba(84, 87, 103, 0.87)',
   subtitleText: 'rgba(84, 87, 103, 0.54)',
-  themeColor:'#0fa665',
+  themeColor:'#4c669f',
   antiPrimaryText: '#ffffff',
   border: '#d9d9d9',
   hintTextColor: '#eeeeee',
