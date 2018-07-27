@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, TouchableOpacity, TextInput, KeyboardAvoidingView, AsyncStorage, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Images } from '../Themes'
+import LinearGradient from 'react-native-linear-gradient'
+import { Colors, Images } from '../Themes'
 import { WhiteSpace } from 'antd-mobile-rn';
 import LoginActions from '../Redux/LoginRedux'
 import { connect } from 'react-redux'
@@ -16,9 +17,9 @@ class SignInScreen extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { 
-      email: "", 
-      password: "" 
+    this.state = {
+      email: "",
+      password: ""
     };
     this.isAttempting = false
   }
@@ -28,6 +29,16 @@ class SignInScreen extends Component {
       this.props.navigation.navigate('App');
       AsyncStorage.setItem('userToken', nextProps.admin.token);
     }
+    if (!_.isEqual(this.props, nextProps) && nextProps.admin.error) {
+      Alert.alert(
+        'Alert',
+        nextProps.admin.error,
+        [
+          { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ],
+        { cancelable: false }
+      )
+    }
   }
 
   _signInAsync = async () => {
@@ -35,50 +46,51 @@ class SignInScreen extends Component {
     this.props.attemptLogin(email, password);
   };
 
-  render () {
+  render() {
     const { email, password } = this.state
     const { fetching } = this.props
     return (
       <View style={styles.mainContainer}>
-          <KeyboardAvoidingView style={styles.keyboardAvoidingContainer} behavior="padding" enabled>
-            <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
-            <View style={styles.section} >
-              <Image source={Images.logo} style={styles.logo}/>
-              <Text style={styles.titleText}>
-                Smart CheckIn
+        {/* <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' /> */}
+        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={['#4c669f', '#3b5998', '#192f6a']}
+          style={styles.keyboardAvoidingContainer}>
+          <View style={styles.section} >
+            <Image source={Images.logo} style={styles.logo} />
+            <Text style={styles.titleText}>
+              Smart CheckIn
               </Text>
-            </View>
-            <WhiteSpace size="xl" />
-            <View style={styles.row}>
-              <Icon name="user" size={20} color="#fff" />
-              <TextInput
-                style={styles.textInput}
-                onChangeText={(email) => this.setState({email})}
-                placeholder="Email"
-                placeholderTextColor="white"
-                onSubmitEditing={() => this.refs.password.focus()}
-              />
-            </View>
-            <WhiteSpace size="md" />
-            <View style={styles.row}>
-              <Icon name="lock" size={20} color="#fff" />
-              <TextInput
-                ref='password'
-                style={styles.textInput}
-                onChangeText={(password) => this.setState({password})}
-                secureTextEntry
-                returnKeyType="go"
-                placeholder="Password"
-                onSubmitEditing={this._signInAsync}
-                placeholderTextColor="white"
-              />
-            </View>
-            <WhiteSpace size="xl" />
-            <TouchableOpacity style={styles.button} onPress={this._signInAsync}>
-              <Text style={styles.buttonText}> Log In </Text>
-            </TouchableOpacity>
-          </KeyboardAvoidingView>
-      </View>
+          </View>
+          <WhiteSpace size="xl" />
+          <View style={styles.row}>
+            <Icon name="user" size={20} color="#fff" />
+            <TextInput
+              style={styles.textInput}
+              onChangeText={(email) => this.setState({ email })}
+              placeholder="Email"
+              placeholderTextColor="white"
+              onSubmitEditing={() => this.refs.password.focus()}
+            />
+          </View>
+          <WhiteSpace size="md" />
+          <View style={styles.row}>
+            <Icon name="lock" size={20} color="#fff" />
+            <TextInput
+              ref='password'
+              style={styles.textInput}
+              onChangeText={(password) => this.setState({ password })}
+              secureTextEntry
+              returnKeyType="go"
+              placeholder="Password"
+              onSubmitEditing={this._signInAsync}
+              placeholderTextColor="white"
+            />
+          </View>
+          <WhiteSpace size="xl" />
+          <TouchableOpacity style={[styles.button, { backgroundColor: Colors.white, margin: 0 }]} onPress={this._signInAsync}>
+            <Text style={styles.buttonText}> Log In </Text>
+          </TouchableOpacity>
+        </LinearGradient>
+      </View >
     )
   }
 }

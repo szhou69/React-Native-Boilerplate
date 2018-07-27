@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, TouchableOpacity, TouchableHighlight } from 'react-native'
-import { Images } from '../Themes'
+import { Images, Colors, Fonts } from '../Themes'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import moment from 'moment';
 import { WhiteSpace } from 'antd-mobile-rn';
 import SignatureCapture from 'react-native-signature-capture';
 
 // Styles
-import styles from './Styles/LaunchScreenStyles'
+import styles from './Styles/OtherScreenStyles'
 
 export default class OtherScreen extends Component {
 
@@ -14,12 +15,18 @@ export default class OtherScreen extends Component {
     const { params } = navigation.state;
 
     return {
-      title: params ? params.appointment.User.first_name +" "+ params.appointment.User.last_name : 'Other Screen',
+      headerTitle: params ? params.appointment.User.first_name + " " + params.appointment.User.last_name : 'Other Screen',
+      headerStyle: {
+        borderColor: Colors.themeColor,
+        backgroundColor: Colors.themeColor,
+        borderBottomWidth: 0,
+      },
     };
   };
 
   saveSign() {
     this.refs["sign"].saveImage();
+    this.props.navigation.goBack();
   }
 
   resetSign() {
@@ -32,52 +39,54 @@ export default class OtherScreen extends Component {
     console.tron.log(result);
   }
   _onDragEvent() {
-      // This callback will be called when the user enters signature
+    // This callback will be called when the user enters signature
     console.tron.log("dragged");
   }
 
-  render () {
+  render() {
     const { params } = this.props.navigation.state;
     return (
       <View style={styles.mainContainer}>
         {/* <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' /> */}
         <ScrollView style={styles.container}>
-         <Text>Appointment Time: {"\n"}
-         {moment(params.appointment.time_from).format('MM/DD/YYYY hh:mm')}</Text>
-         <WhiteSpace size="xl" />
-        
-         <Text>Business Location: {"\n"}
-         {params.appointment.Business_Location.address}, {params.appointment.Business_Location.city}, {params.appointment.Business_Location.state}, 
-         {params.appointment.Business_Location.country}, {params.appointment.Business_Location.zipcode}
-         </Text>
-         <WhiteSpace size="xl" />
-         
-         <Text>Sign Below to Check In</Text>
-         <WhiteSpace size="xl" />
-         <View style={{height: 200, alignSelf: 'stretch', borderWidth: 2, marginLeft:2, marginRight:2, backgroundColor: '#ffffff'}}>
-          <SignatureCapture
-                      style={[{flex:1}]}
-                      ref="sign"
-                      onSaveEvent={this._onSaveEvent}
-                      onDragEvent={this._onDragEvent}
-                      saveImageFileInExtStorage={false}
-                      showNativeButtons={false}
-                      showTitleLabel={false}
-                      viewMode={"portrait"}/>
-         </View>
-         <View style={{ flex: 1, flexDirection: "row" }}>
-            <TouchableOpacity style={styles.button}
-                onPress={() => { this.saveSign() } } >
-                <Text style={styles.buttonText}>Confirm</Text>
-            </TouchableOpacity>
+          <Text style={styles.bodyText}>Appointment Time: {"\n"}
+            {"Today " + moment(params.appointment.time_from).format('hh:mm') + " - " + moment(params.appointment.time_to).format('hh:mm')}</Text>
+          <WhiteSpace size="xl" />
 
-            <TouchableOpacity style={styles.button}
-                onPress={() => { this.resetSign() } } >
-                <Text style={styles.buttonText}>Clear</Text>
+          <Text style={styles.bodyText}>Business Location: {"\n"}
+            {params.appointment.Business_Location.address}, {params.appointment.Business_Location.city}, {params.appointment.Business_Location.state},
+         {params.appointment.Business_Location.country}, {params.appointment.Business_Location.zipcode}
+          </Text>
+          <WhiteSpace size="xl" />
+
+          <Text style={styles.bodyText}>Sign Below to Check In:</Text>
+          <WhiteSpace size="md" />
+          <View style={{ height: 200, alignSelf: 'stretch', borderWidth: 2, marginLeft: 2, marginRight: 2, backgroundColor: '#ffffff' }}>
+            <SignatureCapture
+              style={[{ flex: 1 }]}
+              ref="sign"
+              onSaveEvent={this._onSaveEvent}
+              onDragEvent={this._onDragEvent}
+              saveImageFileInExtStorage={false}
+              showNativeButtons={false}
+              showTitleLabel={false}
+              viewMode={"portrait"} />
+            <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+              <Text></Text>
+            </View>
+          </View>
+          <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around" }}>
+            <TouchableOpacity style={[styles.button, { flex: 1 }]}
+              onPress={() => { this.resetSign() }} >
+              <Text style={[styles.buttonText, { color: Colors.themeColor }]}>Clear</Text>
             </TouchableOpacity>
-        </View>
+            <TouchableOpacity style={[styles.button, { flex: 1, backgroundColor: Colors.themeColor }]}
+              onPress={() => { this.saveSign() }} >
+              <Text style={[styles.buttonText, { color: Colors.white }]}>Confirm</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
-      </View>
+      </View >
     )
   }
 }

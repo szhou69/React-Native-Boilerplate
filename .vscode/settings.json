@@ -1,0 +1,20 @@
+{
+  "files.autoSave": "off",
+  "editor.fontSize": 14,
+  "workbench.colorTheme": "Palenight Theme",
+  "git.ignoreLegacyWarning": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": true,
+  "prettier.eslintIntegration": true,
+  "[blade]": {},
+  "vsicons.dontShowNewVersionMessage": true,
+  "explorer.confirmDelete": false,
+  "powermode.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.statusBar.feedback.visible": false,
+  "[javascript]": {
+
+  }
+}

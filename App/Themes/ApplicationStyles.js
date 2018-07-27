@@ -1,7 +1,9 @@
 import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
-import {Platform} from 'react-native';
+import {
+  Platform
+} from 'react-native';
 
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
@@ -17,17 +19,21 @@ const ApplicationStyles = {
       flex: 1
     },
     button: {
-      backgroundColor: Colors.white,
       borderColor: Colors.white,
       height: 40,
       borderRadius: Metrics.buttonRadius,
       justifyContent: 'center',
       alignSelf: 'stretch',
+      margin: 15,
     },
     buttonText: {
       color: Colors.secondaryText,
       textAlign: 'center',
       fontSize: 16,
+      paddingLeft: 10,
+      paddingRight: 10,
+      borderRadius: 5,
+      ...Fonts.style.regular,
     },
     textInput: {
       paddingLeft: 10,
@@ -36,6 +42,7 @@ const ApplicationStyles = {
       color: Colors.antiPrimaryText,
       borderRadius: Metrics.buttonRadius,
       alignSelf: 'stretch',
+      ...Fonts.style.regular,
     },
     backgroundImage: {
       position: 'absolute',
@@ -52,7 +59,7 @@ const ApplicationStyles = {
     section: {
       margin: Metrics.section,
       padding: Metrics.baseMargin,
-      justifyContent:'center',
+      justifyContent: 'center',
       alignItems: 'center'
     },
     sectionText: {
@@ -75,7 +82,12 @@ const ApplicationStyles = {
     },
     textFont: {
       ...Fonts.style.regular,
-    }
+    },
+    headerTitle: {
+      ...Fonts.style.regular,
+      fontSize: 17,
+      color: Colors.antiPrimaryText
+    },
   },
   darkLabelContainer: {
     padding: Metrics.smallMargin,

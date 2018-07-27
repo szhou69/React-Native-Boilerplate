@@ -1,5 +1,10 @@
-import { StyleSheet } from 'react-native'
-import { Metrics, ApplicationStyles } from '../../Themes'
+import {
+  StyleSheet
+} from 'react-native'
+import {
+  Metrics,
+  ApplicationStyles
+} from '../../Themes'
 import Colors from '../../Themes/Colors'
 
 export default StyleSheet.create({
@@ -25,10 +30,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 10,
     borderColor: Colors.border,
-    // color: Colors.antiPrimaryText,
-    borderWidth: 0.5,
+    borderWidth: 1,
     height: 40,
     borderRadius: Metrics.buttonRadius,
     alignSelf: 'stretch',
+    marginTop: 2,
   }
 })
