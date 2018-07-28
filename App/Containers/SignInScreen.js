@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View, TouchableOpacity, TextInput, KeyboardAvoidingView, AsyncStorage, Alert } from 'react-native'
+import { Text, Image, View, TouchableOpacity, TouchableWithoutFeedback, TextInput, Keyboard, AsyncStorage, Alert, } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LinearGradient from 'react-native-linear-gradient'
 import { Colors, Images } from '../Themes'
@@ -50,7 +50,7 @@ class SignInScreen extends Component {
     const { email, password } = this.state
     const { fetching } = this.props
     return (
-      <View style={styles.mainContainer}>
+      <TouchableWithoutFeedback style={styles.mainContainer} onPress={() => Keyboard.dismiss()}>
         {/* <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' /> */}
         <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} colors={['#4c669f', '#3b5998', '#192f6a']}
           style={styles.keyboardAvoidingContainer}>
@@ -67,6 +67,7 @@ class SignInScreen extends Component {
               style={styles.textInput}
               onChangeText={(email) => this.setState({ email })}
               placeholder="Email"
+              keyboardType='email-address'
               placeholderTextColor="white"
               onSubmitEditing={() => this.refs.password.focus()}
             />
@@ -90,7 +91,7 @@ class SignInScreen extends Component {
             <Text style={styles.buttonText}> Log In </Text>
           </TouchableOpacity>
         </LinearGradient>
-      </View >
+      </TouchableWithoutFeedback >
     )
   }
 }

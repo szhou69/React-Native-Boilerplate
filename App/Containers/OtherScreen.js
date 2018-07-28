@@ -49,17 +49,17 @@ export default class OtherScreen extends Component {
       <View style={styles.mainContainer}>
         {/* <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' /> */}
         <ScrollView style={styles.container}>
-          <Text style={styles.bodyText}>Appointment Time: {"\n"}
-            {"Today " + moment(params.appointment.time_from).format('hh:mm') + " - " + moment(params.appointment.time_to).format('hh:mm')}</Text>
+          <Text style={[styles.bodyText, { fontWeight: 'bold' }]}>Appointment Time:</Text>
+          <Text style={styles.bodyText}>{"Today " + moment(params.appointment.time_from).format('hh:mm') + " - " + moment(params.appointment.time_to).format('hh:mm')}</Text>
           <WhiteSpace size="xl" />
 
-          <Text style={styles.bodyText}>Business Location: {"\n"}
-            {params.appointment.Business_Location.address}, {params.appointment.Business_Location.city}, {params.appointment.Business_Location.state},
+          <Text style={[styles.bodyText, { fontWeight: 'bold' }]}>Business Location:</Text>
+          <Text style={styles.bodyText}>{params.appointment.Business_Location.address}, {params.appointment.Business_Location.city}, {params.appointment.Business_Location.state},
          {params.appointment.Business_Location.country}, {params.appointment.Business_Location.zipcode}
           </Text>
           <WhiteSpace size="xl" />
 
-          <Text style={styles.bodyText}>Sign Below to Check In:</Text>
+          <Text style={[styles.bodyText, { fontWeight: 'bold' }]}>Sign Below to Check In:</Text>
           <WhiteSpace size="md" />
           <View style={{ height: 200, alignSelf: 'stretch', borderWidth: 2, marginLeft: 2, marginRight: 2, backgroundColor: '#ffffff' }}>
             <SignatureCapture
